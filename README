@@ -1,0 +1,8 @@
+IPC::UDPmsg - UDP Interprocess Communication Module
+
+The purpose of this package is to provide non-blocking message passing between
+two or more processes running on the same machine, in such a way that it will
+run on Win32 as well as Linux machines. 
+
+Extract the file UDPmsg.pm from the tar.gz file and place it in your 
+perl/site/lib/IPC directory.
