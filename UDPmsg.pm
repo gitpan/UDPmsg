@@ -1,6 +1,6 @@
-# IPC::UdpMsg.pm
+# IPC::UDPmsg.pm
 
-package IPC::UdpMsg;
+package IPC::UDPmsg;
 use Socket;
 
 
@@ -77,7 +77,7 @@ __END__
 
 =head1 NAME
 
-IPC::UdpMsg - UDP Interprocess Communication Module
+IPC::UDPmsg - UDP Interprocess Communication Module
 
 =head1 SYNOPSIS
 
@@ -112,12 +112,11 @@ under Linux and Win32.
 Each process is assigned a
 port.  Each process creates an object using that port number.  Passing a message
 from one process to another is just a matter of providing the destination port
-number.  A process can receive messages from any other the other processes using
+number.  A process can receive messages from any other process using
 just the one object.  So there is only one input to monitor, no matter how many
 other processes may be sending messages. The from() method will tell who sent the message, if that
 information is needed, for example to send a reply.  Most important, is that the read() 
-method is non-blocking,
-and returns immediately if no data is available.
+method is non-blocking, and returns immediately if no data is available.
 
 
 
@@ -131,9 +130,11 @@ Methods included are:
    $port = $msg->from();                  # returns the port number of the process that
                                           #   sent the last message read.
    $stat = $msg->canread();               # returns true if data is available to read.
-                                          #   will sometimes return true even if no data,
-                                          #   for example, if an error occurred. In this
+                                          #   Will sometimes return true even if no data.
+                                          #   For example, if an error occurred. In this
                                           #   case, read() will still correctly return undef.
+                                          #   Generally, there is no need to call this method,
+                                          #   simply call the read() method instead.
 
 Object Variables are:
 
@@ -156,13 +157,21 @@ future release.
 
 Robert Laughlin ( robert@galaxysys.com )
 
-=head1 VERSION
+=head1 VERSIONS
 
-IPC::UdpMsg version 0.10, 11 Jan 2004
+=over 4
+
+=item *
+IPC::UDPmsg version 0.11, 22 Jan 2005  Documentation improved slightly, renamed
+
+=item *
+IPC::UdpMsg version 0.10, 11 Jan 2005  Initial release
+
+=back
 
 =head1 COPYRIGHT
 
-Copyright (c) 20004 Robert Laughlin <robert@galaxysys.com>. All rights reserved.
+Copyright (c) 20005 Robert Laughlin <robert@galaxysys.com>. All rights reserved.
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
 
